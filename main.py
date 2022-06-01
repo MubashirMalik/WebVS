@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 import crawler
 import spider
+import scanner
+
 
 if __name__ == "__main__":
 
@@ -9,12 +11,8 @@ if __name__ == "__main__":
     print("[1] Crawl Subdomains")
     print("[2] Crawl Directories/Files/Folders")
     print("[3] Extract Links from Website")
+    print("[4] Extract Forms")
     print()
-
-    print("Web Vulnerability Scanner")
-    print("-------------------------")
-    print("[4] Extract Forms ")
-    print("[5] Test for XSS Attack")
 
     choice = int(input("Enter your choice: "))
     print()
@@ -34,10 +32,18 @@ if __name__ == "__main__":
         crawler = crawler.Crawler(target_url, filepath)
         crawler.crawl_directories()
     elif choice == 3:
-        target_url = input("Enter target URL (e.g., www.google.com): ")
+        target_url = input("Enter target URL (e.g., daraz.com): ")
         print()
 
         spider = spider.Spider(target_url)
         print("[*] Starting Spider...\n")
         spider.crawl(target_url)
         print("\n[*] Crawl completed.")
+    elif choice == 4:
+        target_url = input("Enter target URL (e.g., https://flexstudent.nu.edu.pk/Login): ")
+        print()
+
+        scanner = scanner.Scanner(target_url)
+        print("[*] Starting Scanner...\n")
+        scanner.extract_forms()
+        print("\n[*] Scan completed.")
